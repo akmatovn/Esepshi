@@ -33,7 +33,7 @@ namespace Esepshi
         private const string SwaggerTitle = "Esepshi";
         private const string Version = "v1.0.0";
         private const string SwaggerEndpoint = "/swagger/v1.0.0/swagger.json";
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -58,7 +58,16 @@ namespace Esepshi
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc(Version, new OpenApiInfo { Title = SwaggerTitle, Version = Version });
+                c.SwaggerDoc(Version, new OpenApiInfo
+                {
+                    Title = SwaggerTitle,
+                    Version = Version,
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Nurbek Akmatov",
+                        Email = "akmatovn@gmail.com",
+                    },
+                });
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Name = "Authorization",
@@ -138,7 +147,11 @@ namespace Esepshi
 #if !DEBUG
                     c.PreSerializeFilters.Add((swaggerDoc, httpReq) =>
                         {
-                            swaggerDoc.BasePath = Configuration.GetValue<string>("Swagger:Context");
+                            var path = new OpenApiPaths();
+                            var pathItem = new OpenApiPathItem();
+
+                            path.Add(Configuration.GetValue<string>("Swagger:Context") + SwaggerEndpoint, pathItem);
+                            swaggerDoc.Paths = path;
                         });
 #endif
                 });
@@ -151,7 +164,7 @@ namespace Esepshi
 #if DEBUG
                 c.SwaggerEndpoint(SwaggerEndpoint, SwaggerTitle);
 #else
-                c.SwaggerEndpoint(Configuration.GetValue<string>("Swagger:Context")+SwaggerEndpoint, SwaggerTitle);
+                c.SwaggerEndpoint(Configuration.GetValue<string>("Swagger:Context") + SwaggerEndpoint, SwaggerTitle);
 #endif
                 c.RoutePrefix = string.Empty;
             });
