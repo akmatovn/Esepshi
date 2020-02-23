@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Esepshi.DAL", "Esepshi.DAL\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Esepshi.BLL", "Esepshi.BLL\Esepshi.BLL.csproj", "{0395D0A3-CF66-48D0-91D8-4B9E8925045B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientAuth", "ClientAuth\ClientAuth.csproj", "{6592F929-3424-4E5F-A22D-8090F8F08A23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClientAuth", "ClientAuth\ClientAuth.csproj", "{6592F929-3424-4E5F-A22D-8090F8F08A23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

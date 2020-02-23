@@ -1,5 +1,5 @@
-﻿using ClientAuth.Service;
-using Esepshi.Models.Account;
+﻿using ClientAuth.Models;
+using ClientAuth.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
